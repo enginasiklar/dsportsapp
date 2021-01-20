@@ -4,7 +4,7 @@
 {% if role==2 %}
     {% extends "layout_c.html" %}
 {% endif %}
-{% block title %}Add Session{% endblock %}
+{% block title %}Add Statistics{% endblock %}
 {% block content %}
 <div class="box">
 <form action="{{ url_for('stat_send') }}" method = "POST" id="stat_send" class="input-group">
