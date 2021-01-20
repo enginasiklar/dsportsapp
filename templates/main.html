@@ -1,1 +1,14 @@
+{% if role == 1 %}
+    {% extends "layout.html" %}
+{% endif %} 
+{% if role==2 %}
+    {% extends "layout_c.html" %}
+{% endif %}
+{% block title %}Main Page for Athletes{% endblock %}
+{% block content %}
 
+<div class="box">
+<div><h1>Welcome {{name}}</h1></div>
+<div style="padding-top: 25px;"><iframe width="400" height="300" src="https://www.youtube.com/embed/s5D29O1HqoQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+</div>
+{% endblock %}

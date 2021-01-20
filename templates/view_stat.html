@@ -1,0 +1,47 @@
+{% if user1 != user2 %}
+    {% extends "layout_other.html" %}
+{%else%}
+{% if role == 1 %}
+    {% extends "layout.html" %}
+{% endif %} 
+{% if role==2 %}
+    {% extends "layout_c.html" %}
+{% endif %} 
+{% endif %} 
+
+{% block title %}View Stats{% endblock %}
+{% block content %}
+<div class="box">
+<table> 
+    <thead> 
+    <tr> 
+        <th></th> 
+        <th>Stat Date</th>
+        <th>Height</th>
+        <th>Weight</th>
+        <th>Fat Percantage</th>
+        <th>Caloric Intake</th>
+        <th>Comment</th> 
+    </tr> 
+    </thead> 
+    <tbody> 
+        {% for row in data %}  
+            <tr>
+                <form action="{{ url_for('comment_stat') }}" method = "POST" id="comment_stat" class="input-group">
+                <td><input type="radio" id="StatDate" name="StatDate" value="{{row.StatDate}}" ></td>
+                <td>{{row.StatDate}}</td>
+                <td>{{row.Height}}</td>
+                <td>{{row.Weight}}</td>
+                <td>{{row.FatPercantage}}</td>
+                <td>{{row.CaloricIntake}}</td>
+                <td>{{row.Comment}}</td>
+            </tr> 
+        {% endfor %} 
+    </tbody> 
+</table> 
+<div>
+<label for="scomment">Comment:</label>
+<textarea rows="4" cols="30" id="scomment" name="scomment">
+    Enter your comment here...</textarea><br><br>
+<input type="submit" value="Comment" /></div></form ></div>
+{% endblock %}

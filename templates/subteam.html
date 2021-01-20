@@ -1,0 +1,42 @@
+{% if role == 1 %}
+    {% extends "layout.html" %}
+{% endif %} 
+{% if role==2 %}
+    {% extends "layout_c.html" %}
+{% endif %}
+{% block title %}Create Team{% endblock %} 
+{% block content %} 
+<div class="box">
+
+{% if role==2 %}<div><form id="formElement" 
+    action="{{ url_for('create_steam') }}"
+    method="POST"
+    id="add_member"
+    class="input-group"><label for="tname">Subteam Name:</label>
+    <input type="text" id="sname" name="sname" /></div>
+<div><input type="submit" value="Create Subteam" /></div>{% endif %}</form>
+
+<table> 
+    
+    <thead> 
+    <tr> 
+        <th>Name</th>
+    </tr> 
+    </thead> 
+    <tbody> 
+        {% for row in data %}  
+            <tr> <form id="formElement" 
+                action="{{ url_for('view_subteam') }}"
+                method="POST"
+                id="view_subteam"
+                class="input-group">
+                <td><input type="radio" id="subteamid" name="subteamid" value="{{row.SubteamID}}">
+                <td>{{row.SubteamName}}</td>
+            </tr> 
+        {% endfor %} 
+    </tbody> 
+</table>
+
+<div><input type="submit" value="View Subteam" /></div></form>
+</div>
+{% endblock %}
