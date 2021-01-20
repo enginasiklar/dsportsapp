@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+    <title>Login and Registeration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <body>
+        <div class="hero">
+            <div class="form-box">
+                <div class="logo-image"></div>
+                <div class="button-box">
+                    <div id="btn"></div>
+                    <button type="button" class="toggle-btn" onclick="login()">Login</button>
+                    <button type="button" class="toggle-btn" onclick="register()">Register</button>
+                </div>
+                <form action="{{ url_for('login') }}" method = "POST" id="login" class="input-group">
+                      <input type="text" class="input-field" name="username" placeholder="User Name" required>
+                      <input type="password" class="input-field" name="password" placeholder="Password" required>
+                      <button type="submit" class="submit-btn" value="Sign In">Login</button> 
+                </form>
+                <form action="{{ url_for('register') }}" method = "POST" id="register" class="input-group">
+                    <input type="text" class="input-field" name="username" placeholder="User Name" required>        
+                    <input type="text" class="input-field" name="password" placeholder="Password" required>
+                    <input type="text" class="input-field" name="name" placeholder="Name" required>
+                    <input type="text" class="input-field" name="surname" placeholder="Surname" required>
+                    <label class="drop-label">Branch</label>
+                    <select id="branch" class="drop-list" name="branchID">
+                        {% for row in data %}
+                        <option value={{row.BranchID}}>{{row.BranchName}}</option>
+                        {% endfor %} 
+                    </select>
+                    <label class="drop-label">Role</label>
+                    <select id="role" class="drop-list" name="roleID">
+                        <option value=1>Athlete</option>
+                        <option value=2>Coach</option>
+                    </select>
+                    <button type="submit" class="submit-btn">Register</button> 
+              </form>       
+            </div>
+        </div>
+
+        <script> 
+        var x=document.getElementById("login");
+        var y=document.getElementById("register");
+        var z=document.getElementById("btn");
+
+        function register(){
+            x.style.left="-400px";
+            y.style.left="50px";
+            z.style.left="110px";
+        }
+
+        function login(){
+            x.style.left="50px";
+            y.style.left="450px";
+            z.style.left="0px";
+        }
+        </script>
+
+    </body>
+</head>
+</html>

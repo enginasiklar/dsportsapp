@@ -1,0 +1,20 @@
+{% if role == 1 %}
+    {% extends "layout.html" %}
+{% endif %} 
+{% if role==2 %}
+    {% extends "layout_c.html" %}
+{% endif %}
+{% block title %}Create Team{% endblock %} 
+{% block content %}
+<div class="box">
+<form
+  action="{{ url_for('create_team_send') }}"
+  method="POST"
+  id="create_team_send"
+  class="input-group"
+>
+  <label for="tname">Team Name:</label>
+  <input type="text" id="tname" name="tname" />
+  <input type="submit" value="Submit" />
+</form></div>
+{% endblock %}
